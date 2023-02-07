@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Factura {
 	//variables instancia
-	private Cliente cliente;
+	private Persona cliente;
 	private LocalDate fechaFacturacion;
 	private LocalDate fechaInicioPeriodo;
 	private LocalDate fechaFinPeriodo;

@@ -7,7 +7,12 @@ public class LlamadaLocal extends Llamada{
 	//variables instancia
 	
 	//constructor
-	public LlamadaLocal(LocalDate unaFecha, LocalTime unaHoraComienzo, int unaDuracion, Cliente unRemitente, Cliente unReceptor) {
+	public LlamadaLocal(LocalDate unaFecha, LocalTime unaHoraComienzo, int unaDuracion, Persona unRemitente, Persona unReceptor) {
 		super(unaFecha,unaHoraComienzo,unaDuracion, unRemitente,unReceptor);
+	}
+	
+	//metodos
+	public double calcularCosto() {
+		return this.duracion * 1;
 	}
 }
