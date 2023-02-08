@@ -9,5 +9,15 @@ public class Factura {
 	private LocalDate fechaInicioPeriodo;
 	private LocalDate fechaFinPeriodo;
 	private double montoTotal; //ver
+	
+	
+	//constructor
+	public Factura(Persona unCliente, LocalDate unFeFacturacion, LocalDate fInicio, LocalDate fFin, double unMontoTotal) {
+		this.cliente=unCliente;
+		this.fechaFacturacion=unFeFacturacion;
+		this.fechaInicioPeriodo=fInicio;
+		this.fechaFinPeriodo=fFin;
+		this.montoTotal= unMontoTotal;
+	}
 	//
 }	

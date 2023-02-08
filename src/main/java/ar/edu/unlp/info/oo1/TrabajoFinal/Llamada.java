@@ -1,42 +1,43 @@
 package ar.edu.unlp.info.oo1.TrabajoFinal;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public abstract class Llamada {
+public abstract class Llamada{
 	
 	//variables instancia
-	private LocalDate fechaLlamada;
-	protected LocalTime horaComienzo;
+	protected LocalDateTime fechaYHoraLlamada;
 	protected int duracion;
-	protected Persona remitente;
-	private Persona receptor;
-	private LocalTime horaInicioDiurno;
-	private LocalTime horaFinDiurno;
+	protected String remitente;
+	private String receptor;
+	private int horaInicioDiurno;
+	private int horaFinDiurno;
 	
 	//constructor
-	public Llamada(LocalDate unaFecha, LocalTime unaHoraComienzo, int unaDuracion, Persona unRemitente, Persona unReceptor) {
-		this.fechaLlamada=unaFecha;
-		this.horaComienzo=unaHoraComienzo;
+	public Llamada(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor) {
+		this.fechaYHoraLlamada=unaFechaYHora;
 		this.duracion=unaDuracion;
 		this.remitente=unRemitente;
-		this.receptor=unReceptor;
-		
-		this.horaInicioDiurno= LocalTime.of(8, 0);
-		this.horaFinDiurno= LocalTime.of(20, 0);
+		this.receptor=unReceptor;		
+		this.horaInicioDiurno= 8;
+		this.horaFinDiurno= 20;
 	}
 	
 	
 	//metodo
-	public abstract double calcularCosto();
+	public abstract double calcularCosto(double unDescuento);
+	// public abstract double descuento();
+	// public abstract double precioMinuto();
 
+	
 	public boolean seEncuentraEnPeriodo(LocalDate fInicio,LocalDate fFin) {
-		DateLapse d = new DateLapse(fInicio, fFin);
-		return d.includesDate(this.fechaLlamada);
+			DateLapse d = new DateLapse(fInicio, fFin);
+		return d.includesDate(this.fechaYHoraLlamada);
 	}
 	
 	public boolean esDiurno() {
-		return (horaComienzo.isAfter(horaInicioDiurno))&&(horaComienzo.isBefore(horaFinDiurno));
+		return (fechaYHoraLlamada.getHour()>horaInicioDiurno)&& (fechaYHoraLlamada.getHour()<horaFinDiurno);
 	}
 	
 	

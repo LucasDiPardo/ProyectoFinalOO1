@@ -1,6 +1,7 @@
 package ar.edu.unlp.info.oo1.TrabajoFinal;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class LlamadaInternacional extends Llamada{
@@ -9,18 +10,18 @@ public class LlamadaInternacional extends Llamada{
 	private Pais paisDestino;
 	
 	//constructor
-	public LlamadaInternacional(LocalDate unaFecha, LocalTime unaHoraComienzo, int unaDuracion, Persona unRemitente, Persona unReceptor, Pais unOrigen, Pais unDestino) {
-		super(unaFecha,unaHoraComienzo,unaDuracion, unRemitente,unReceptor);
+	public LlamadaInternacional(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, Pais unOrigen, Pais unDestino) {
+		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.paisOrigen=unOrigen;
 		this.paisDestino=unDestino;
 	}
 	
 	//metodos
-	public double calcularCosto() {
+	public double calcularCosto(double unDescuento) { //depende que persona llame hay que pasar 0 o 0,10
 		
 		double totalSinDescuento=duracion*getPrecioPorMinuto();
 		
-		return totalSinDescuento - totalSinDescuento*this.remitente.getDescuento();
+		return totalSinDescuento - totalSinDescuento*unDescuento;
 		
 	}
 	

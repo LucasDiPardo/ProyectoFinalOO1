@@ -1,6 +1,7 @@
 package ar.edu.unlp.info.oo1.TrabajoFinal;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
 public class DateLapse {
@@ -25,8 +26,8 @@ public class DateLapse {
 	
 	//metodos
 	
-	public boolean includesDate(LocalDate unafecha) {
-		return mayorQueFrom(unafecha)&&(menorQueTo(unafecha));
+	public boolean includesDate(LocalDateTime fechaYHoraLlamada) {
+		return mayorQueFrom(fechaYHoraLlamada.toLocalDate())&&(menorQueTo(fechaYHoraLlamada.toLocalDate()));
 	}
 	
 	private boolean mayorQueFrom(LocalDate unaFecha) {

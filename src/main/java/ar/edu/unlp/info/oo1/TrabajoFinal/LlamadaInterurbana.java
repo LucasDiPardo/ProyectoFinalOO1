@@ -1,6 +1,7 @@
 package ar.edu.unlp.info.oo1.TrabajoFinal;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class LlamadaInterurbana extends Llamada{
@@ -10,17 +11,20 @@ public class LlamadaInterurbana extends Llamada{
 	
 	
 	//constructor
-	public LlamadaInterurbana(LocalDate unaFecha, LocalTime unaHoraComienzo, int unaDuracion, Persona unRemitente, Persona unReceptor, int unaDistanciaKms) {
-		super(unaFecha,unaHoraComienzo,unaDuracion, unRemitente,unReceptor);
+	public LlamadaInterurbana(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, int unaDistanciaKms) {
+		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.distanciaKms=unaDistanciaKms;
 	}
 	
 	//metodos
 	
-	public double calcularCosto() {
-		return precioConexion + (duracion*distanciaKms);
+	public double calcularCosto(double unDescuento) {
+		return total() - (total()*unDescuento);
 	}
 	
+	private double total() {
+		return precioConexion + (this.duracion*getPrecioPorkms());
+	}
 	
 	private double getPrecioPorkms() {
 		if (distanciaKms<100) {

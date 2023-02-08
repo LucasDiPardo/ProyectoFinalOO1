@@ -1,6 +1,7 @@
 package ar.edu.unlp.info.oo1.TrabajoFinal;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +12,10 @@ public abstract class Persona {
 	private String nombre;
 	private String direccion;
 	private List<Llamada> registroLlamadas;
-	private int numeroTelefonico;
+	private String numeroTelefonico;
 	//constructor
 	
-	public Persona(String unNombre,String unaDireccion,int unNumeroTelefonico) {
+	public Persona(String unNombre,String unaDireccion,String unNumeroTelefonico) {
 		this.nombre=unNombre;
 		this.direccion=unaDireccion;
 		this.registroLlamadas= new ArrayList<Llamada>();
@@ -24,35 +25,40 @@ public abstract class Persona {
 	//metodos
 	
 	public abstract double getDescuento();
+	public abstract double montoLlamadasEnPeriodo(LocalDate unaFechaInicio, LocalDate unaFechaFin);
+
 	
+	public String getNumeroTelefonico() {
+		return this.numeroTelefonico;
+	}
 	
-	
-	public void registrarLlamadaLocal(LocalDate unaFecha, LocalTime unaHoraComienzo, int unaDuracion, Persona unRemitente, Persona unReceptor) {
-		LlamadaLocal llamadaLoc = new LlamadaLocal(unaFecha,unaHoraComienzo, unaDuracion, unRemitente, unReceptor);
+	public LlamadaLocal registrarLlamadaLocal(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor) {
+			LlamadaLocal llamadaLoc = new LlamadaLocal(unaFechaYHora, unaDuracion, unRemitente, unReceptor);
+			this.registroLlamadas.add(llamadaLoc);
 		
-		this.registroLlamadas.add(llamadaLoc);
+		return llamadaLoc;
 	}
 	
 
-	public void registrarLlamadaInterurbana(LocalDate unaFecha, LocalTime unaHoraComienzo, int unaDuracion, Persona unRemitente, Persona unReceptor, int unaDistanciaKms) {
-		LlamadaInterurbana llamadaInt = new LlamadaInterurbana (unaFecha,unaHoraComienzo, unaDuracion,unRemitente, unReceptor, unaDistanciaKms);
-	
-		this.registroLlamadas.add(llamadaInt);
+	public LlamadaInterurbana registrarLlamadaInterurbana(LocalDateTime unaFechaYHora,int unaDuracion, String unRemitente, String unReceptor, int unaDistanciaKms) {
+			LlamadaInterurbana llamadaInt = new LlamadaInterurbana (unaFechaYHora, unaDuracion,unRemitente, unReceptor, unaDistanciaKms);
+			this.registroLlamadas.add(llamadaInt);
+		
+		return llamadaInt;
 	}
 	
 
-	public void registrarLlamadaInternacional(LocalDate unaFecha, LocalTime unaHoraComienzo, int unaDuracion, Persona unRemitente, Persona unReceptor, Pais unOrigen, Pais unDestino) {
-		LlamadaInternacional llamadaInter = new LlamadaInternacional(unaFecha, unaHoraComienzo, unaDuracion, unRemitente, unReceptor, unOrigen, unDestino);
+	public LlamadaInternacional registrarLlamadaInternacional(LocalDateTime unaFechaYHora,int unaDuracion, String unRemitente, String unReceptor, Pais unOrigen, Pais unDestino) {
+			LlamadaInternacional llamadaInter = new LlamadaInternacional(unaFechaYHora, unaDuracion, unRemitente, unReceptor, unOrigen, unDestino);
+			this.registroLlamadas.add(llamadaInter);
 		
-		this.registroLlamadas.add(llamadaInter);
-	}
+		return llamadaInter;
+	}	
 	
-	public Factura facturar() {		
-		return null; //hacer
-	}
+	
 	
 		
-	private List<Llamada> getLlamadasEnPeriodo(LocalDate fInicio, LocalDate fFin){
+	protected List<Llamada> getLlamadasEnPeriodo(LocalDate fInicio, LocalDate fFin){
 		return this.registroLlamadas.stream()
 				.filter(llamada -> llamada.seEncuentraEnPeriodo(fInicio,fFin))
 				.collect((Collectors.toList()));

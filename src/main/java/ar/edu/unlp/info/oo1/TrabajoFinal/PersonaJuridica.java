@@ -1,12 +1,14 @@
 package ar.edu.unlp.info.oo1.TrabajoFinal;
 
+import java.time.LocalDate;
+
 public class PersonaJuridica extends Persona{
 	//variables instancia
 	private int cuit;
 	private String tipoPJ;
 	
 	//constructor
-	public PersonaJuridica(String unNombre,String unaDireccion,int unNumeroTel, int unCuit, String unTipo) {
+	public PersonaJuridica(String unNombre,String unaDireccion,String unNumeroTel, int unCuit, String unTipo) {
 		super(unNombre,unaDireccion,unNumeroTel);
 		this.cuit=unCuit;
 		this.tipoPJ=unTipo;
@@ -15,5 +17,11 @@ public class PersonaJuridica extends Persona{
 	//metodos
 	public double getDescuento() {
 		return 0;
+	}
+	
+	public double montoLlamadasEnPeriodo(LocalDate unaFechaInicio, LocalDate unaFechaFin) {		
+		return this.getLlamadasEnPeriodo(unaFechaInicio, unaFechaFin).stream()
+				.mapToDouble(l -> l.calcularCosto(getDescuento()))
+				.sum();
 	}
 }
