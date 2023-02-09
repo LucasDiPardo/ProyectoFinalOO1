@@ -46,7 +46,7 @@ public class EmpresaTelefonica {
 		return unNumero; //retorno
 	}
 	
-	protected Persona buscarClienteEmisor(String unNumero) {
+	private Persona buscarClienteEmisor(String unNumero) {
 		return this.clientes.stream()
 				.filter(c -> c.getNumeroTelefonico().equals(unNumero))
 				.findFirst()
@@ -78,7 +78,7 @@ public class EmpresaTelefonica {
 	
 	
 	
-	public Factura FacturarLlamada(Persona unCliente, LocalDate fechaInicio, LocalDate fechaFin, double montoTotal) {
+	public Factura facturarLlamada(Persona unCliente, LocalDate fechaInicio, LocalDate fechaFin, double montoTotal) {
 		return new Factura(unCliente,LocalDate.now(), fechaInicio, fechaFin, montoTotal);
 	}
 	

@@ -14,7 +14,7 @@ public class LlamadaInternacional extends Llamada{
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.paisOrigen=unOrigen;
 		this.paisDestino=unDestino;
-		setPrecioPorMinuto(getPrecioPorMinutoSegunPais());
+		setPrecioPorMinuto(getPrecioPorMinutoSegunPaisYHorario());
 	}
 	public LlamadaInternacional(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, Pais unOrigen, Pais unDestino, double unPrecioPorMinuto) {
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
@@ -32,11 +32,11 @@ public class LlamadaInternacional extends Llamada{
 		
 	}
 	
-	private double getPrecioPorMinutoSegunPais() {
+	private double getPrecioPorMinutoSegunPaisYHorario() {
 		
 		double precioPorMinuto=0;
 		
-		if (esDiurno()) {			
+		if (esDiurno()) {		
 			precioPorMinuto= this.paisDestino.getPrecioDiurno();
 		}else {
 			precioPorMinuto =this.paisDestino.getPrecioNocturno();

@@ -14,7 +14,7 @@ public class PersonaFisica extends Persona{
 	
 	//metodos
 	public double getDescuento() {
-		return 0.10;
+		return 10;
 	}
 	
 	public double montoLlamadasEnPeriodo(LocalDate unaFechaInicio, LocalDate unaFechaFin) {		
