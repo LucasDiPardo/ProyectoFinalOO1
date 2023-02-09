@@ -8,22 +8,29 @@ public class LlamadaInterurbana extends Llamada{
 	//variables instancia
 	private int distanciaKms;
 	private int precioConexion=5;
+
 	
 	
 	//constructor
 	public LlamadaInterurbana(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, int unaDistanciaKms) {
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.distanciaKms=unaDistanciaKms;
+		this.setPrecioPorMinuto(getPrecioPorkms());
+	}
+	public LlamadaInterurbana(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, int unaDistanciaKms, double unPrecioPorMinuto) {
+		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
+		this.distanciaKms=unaDistanciaKms;
+		this.setPrecioPorMinuto(unPrecioPorMinuto);
 	}
 	
 	//metodos
 	
 	public double calcularCosto(double unDescuento) {
-		return total() - (total()*unDescuento);
+		return total() - descuento(total(),unDescuento);
 	}
 	
 	private double total() {
-		return precioConexion + (this.duracion*getPrecioPorkms());
+		return precioConexion + (this.getDuracion()*getPrecioPorMinuto());
 	}
 	
 	private double getPrecioPorkms() {

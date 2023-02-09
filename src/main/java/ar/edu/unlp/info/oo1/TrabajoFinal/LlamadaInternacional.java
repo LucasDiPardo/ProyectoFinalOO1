@@ -14,18 +14,25 @@ public class LlamadaInternacional extends Llamada{
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.paisOrigen=unOrigen;
 		this.paisDestino=unDestino;
+		setPrecioPorMinuto(getPrecioPorMinutoSegunPais());
+	}
+	public LlamadaInternacional(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, Pais unOrigen, Pais unDestino, double unPrecioPorMinuto) {
+		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
+		this.paisOrigen=unOrigen;
+		this.paisDestino=unDestino;
+		setPrecioPorMinuto(unPrecioPorMinuto);
 	}
 	
 	//metodos
-	public double calcularCosto(double unDescuento) { //depende que persona llame hay que pasar 0 o 0,10
+	public double calcularCosto(double unDescuento) { //depende que persona llame se pasa por parametro 0 o 10
 		
-		double totalSinDescuento=duracion*getPrecioPorMinuto();
+		double totalSinDescuento=this.getDuracion()*getPrecioPorMinuto();
 		
-		return totalSinDescuento - totalSinDescuento*unDescuento;
+		return totalSinDescuento - descuento(totalSinDescuento,unDescuento);
 		
 	}
 	
-	private double getPrecioPorMinuto() {
+	private double getPrecioPorMinutoSegunPais() {
 		
 		double precioPorMinuto=0;
 		

@@ -8,11 +8,12 @@ public abstract class Llamada{
 	
 	//variables instancia
 	protected LocalDateTime fechaYHoraLlamada;
-	protected int duracion;
+	private int duracion;
 	protected String remitente;
 	private String receptor;
 	private int horaInicioDiurno;
 	private int horaFinDiurno;
+	private double precioPorMinuto;
 	
 	//constructor
 	public Llamada(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor) {
@@ -24,6 +25,16 @@ public abstract class Llamada{
 		this.horaFinDiurno= 20;
 	}
 	
+	//setters
+	protected void setPrecioPorMinuto(double unPrecio) {
+		this.precioPorMinuto=unPrecio;
+	}
+	public double getPrecioPorMinuto() {
+		return this.precioPorMinuto;
+	}
+	public int getDuracion() {
+		return this.duracion;
+	}
 	
 	//metodo
 	public abstract double calcularCosto(double unDescuento);
@@ -38,6 +49,10 @@ public abstract class Llamada{
 	
 	public boolean esDiurno() {
 		return (fechaYHoraLlamada.getHour()>horaInicioDiurno)&& (fechaYHoraLlamada.getHour()<horaFinDiurno);
+	}
+	
+	protected double descuento(double unTotal,double unDescuento) {
+		return (unTotal*unDescuento)/100;
 	}
 	
 	
