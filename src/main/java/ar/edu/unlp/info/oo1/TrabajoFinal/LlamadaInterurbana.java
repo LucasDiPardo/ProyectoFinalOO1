@@ -11,7 +11,7 @@ public class LlamadaInterurbana extends Llamada{
 
 	
 	
-	//constructor
+	//constructores
 	public LlamadaInterurbana(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, int unaDistanciaKms) {
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.distanciaKms=unaDistanciaKms;
@@ -37,7 +37,7 @@ public class LlamadaInterurbana extends Llamada{
 		if (distanciaKms<100) {
 			return 2;
 		}else {
-			if ((distanciaKms>=100)&&(distanciaKms<=500)){
+			if ((distanciaKms>=100)&&(distanciaKms<500)){
 				return 2.5;
 			}else {
 				return 3;

@@ -19,5 +19,19 @@ public class Factura {
 		this.fechaFinPeriodo=fFin;
 		this.montoTotal= unMontoTotal;
 	}
-	//
+	
+	
+	//getters
+	public double getMontoTotal() {
+		return this.montoTotal;
+	}
+	public LocalDate getFechaFacturacion() {
+		return fechaFacturacion;		
+	}
+	public LocalDate getFechaInicioPeriodo() {
+		return fechaInicioPeriodo;		
+	}
+	public LocalDate getFechaFinPeriodo() {
+		return fechaFinPeriodo;		
+	}
 }	

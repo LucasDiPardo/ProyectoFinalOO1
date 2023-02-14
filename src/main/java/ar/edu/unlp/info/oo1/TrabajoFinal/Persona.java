@@ -35,7 +35,7 @@ public abstract class Persona {
 	public LlamadaLocal registrarLlamadaLocal(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor) {
 			LlamadaLocal llamadaLoc = new LlamadaLocal(unaFechaYHora, unaDuracion, unRemitente, unReceptor);
 			this.registroLlamadas.add(llamadaLoc);
-		
+			
 		return llamadaLoc;
 	}
 	
@@ -46,6 +46,13 @@ public abstract class Persona {
 		
 		return llamadaInt;
 	}
+	
+	public LlamadaInterurbana registrarLlamadaInterurbanaConTarifa(LocalDateTime unaFechaYHora,int unaDuracion, String unRemitente, String unReceptor, int unaDistanciaKms, double unPrecioPorMinuto) {
+		LlamadaInterurbana llamadaInt = new LlamadaInterurbana (unaFechaYHora, unaDuracion,unRemitente, unReceptor, unaDistanciaKms,unPrecioPorMinuto);
+		this.registroLlamadas.add(llamadaInt);
+	
+	return llamadaInt;
+}
 	
 
 	public LlamadaInternacional registrarLlamadaInternacional(LocalDateTime unaFechaYHora,int unaDuracion, String unRemitente, String unReceptor, Pais unOrigen, Pais unDestino) {
@@ -62,6 +69,25 @@ public abstract class Persona {
 		return this.registroLlamadas.stream()
 				.filter(llamada -> llamada.seEncuentraEnPeriodo(fInicio,fFin))
 				.collect((Collectors.toList()));
+	}
+	
+	public Factura facturarLlamada(LocalDate fechaInicio, LocalDate fechaFin) {
+		
+			double montoTotal= this.getLlamadasEnPeriodo(fechaInicio, fechaFin).stream()
+					.mapToDouble(l -> l.calcularCosto(this.getDescuento()))
+					.sum();
+
+		
+		return new Factura(this, LocalDate.now(), fechaInicio, fechaFin, montoTotal);
+	}
+	
+	//getters
+	
+	public List<Llamada> getLlamadas(){
+		return this.registroLlamadas;
+	}
+	public String getNombre() {
+		return this.nombre;
 	}
 	
 }

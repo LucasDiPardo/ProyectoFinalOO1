@@ -40,15 +40,15 @@ public class EmpresaTelefonica {
 	}
 	
 	private String asignarNumero() {		
-			String unNumero=numerosTelefonicos.get(0); //recupero el primer numero y me lo guardo
+			String unNumero=numerosTelefonicos.get(0); //recupero el primer numero y me guardo la referencia
 			numerosTelefonicos.remove(unNumero); //lo elimino de la lista
 			
-		return unNumero; //retorno
+		return unNumero; 
 	}
 	
-	private Persona buscarClienteEmisor(String unNumero) {
+	public Persona buscarClienteEmisor(String unNombre) { //esta publico por el test - busca por nombre de emisor donde suponemos que es unico
 		return this.clientes.stream()
-				.filter(c -> c.getNumeroTelefonico().equals(unNumero))
+				.filter(c -> c.getNombre().equals(unNombre))
 				.findFirst()
 				.orElse(null);
 	}
@@ -74,14 +74,6 @@ public class EmpresaTelefonica {
 			LlamadaInternacional llamadaInternacional = persona.registrarLlamadaInternacional(unaFechaYHora, unaDuracion, unRemitente, unReceptor, unOrigen, unDestino);
 		return llamadaInternacional;
 	}
-	
-	
-	
-	
-	public Factura facturarLlamada(Persona unCliente, LocalDate fechaInicio, LocalDate fechaFin, double montoTotal) {
-		return new Factura(unCliente,LocalDate.now(), fechaInicio, fechaFin, montoTotal);
-	}
-	
 	
 	
 	//getters

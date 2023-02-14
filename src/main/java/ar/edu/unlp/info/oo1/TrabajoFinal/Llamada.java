@@ -25,7 +25,7 @@ public abstract class Llamada{
 		this.horaFinDiurno= 20;
 	}
 	
-	//setters
+	//setters - getters
 	protected void setPrecioPorMinuto(double unPrecio) {
 		this.precioPorMinuto=unPrecio;
 	}
@@ -38,8 +38,6 @@ public abstract class Llamada{
 	
 	//metodo
 	public abstract double calcularCosto(double unDescuento);
-	// public abstract double descuento();
-	// public abstract double precioMinuto();
 
 	
 	public boolean seEncuentraEnPeriodo(LocalDate fInicio,LocalDate fFin) {
