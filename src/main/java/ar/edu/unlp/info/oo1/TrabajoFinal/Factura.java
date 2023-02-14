@@ -26,12 +26,12 @@ public class Factura {
 		return this.montoTotal;
 	}
 	public LocalDate getFechaFacturacion() {
-		return fechaFacturacion;		
+		return this.fechaFacturacion;		
 	}
 	public LocalDate getFechaInicioPeriodo() {
-		return fechaInicioPeriodo;		
+		return this.fechaInicioPeriodo;		
 	}
 	public LocalDate getFechaFinPeriodo() {
-		return fechaFinPeriodo;		
+		return this.fechaFinPeriodo;		
 	}
 }	

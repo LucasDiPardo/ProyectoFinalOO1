@@ -14,6 +14,8 @@ public class LlamadaLocal extends Llamada{
 		this.setPrecioPorMinuto(1);
 		
 	}
+	
+	//ver este constructor por el bonus 2 de tarifa
 	public LlamadaLocal(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, double unPrecioPorMinuto) {
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.setPrecioPorMinuto(unPrecioPorMinuto);

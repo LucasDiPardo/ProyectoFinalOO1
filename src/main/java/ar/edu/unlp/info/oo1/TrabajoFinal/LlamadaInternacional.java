@@ -17,6 +17,7 @@ public class LlamadaInternacional extends Llamada{
 		setPrecioPorMinuto(getPrecioPorMinutoSegunPaisYHorario());
 	}
 	
+	//ver este constructor por el bonus 2 de tarifa
 	public LlamadaInternacional(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, Pais unOrigen, Pais unDestino, double unPrecioPorMinuto) {
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.paisOrigen=unOrigen;

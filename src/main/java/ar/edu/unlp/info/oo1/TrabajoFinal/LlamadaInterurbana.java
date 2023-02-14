@@ -17,6 +17,7 @@ public class LlamadaInterurbana extends Llamada{
 		this.distanciaKms=unaDistanciaKms;
 		this.setPrecioPorMinuto(getPrecioPorkms());
 	}
+	//ver este constructor por el bonus2 de tarifas
 	public LlamadaInterurbana(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, int unaDistanciaKms, double unPrecioPorMinuto) {
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.distanciaKms=unaDistanciaKms;
