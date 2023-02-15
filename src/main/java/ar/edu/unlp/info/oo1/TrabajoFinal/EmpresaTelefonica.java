@@ -76,6 +76,12 @@ public class EmpresaTelefonica {
 	}
 	
 	
+	public Factura facturarCliente(String unNumero, LocalDate fechaFacturacion, LocalDate inicioPeriodo, LocalDate finPeriodo) {
+		Persona cliente= this.buscarClienteEmisorPorNumero(unNumero);
+		
+		return new Factura(cliente, fechaFacturacion,inicioPeriodo,finPeriodo);
+	}
+	
 	//getters
 	public List<Persona> getClientes(){
 		return  this.clientes;
