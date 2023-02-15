@@ -16,7 +16,7 @@ public class LlamadaInternacional extends Llamada{
 		this.paisDestino=unDestino;
 		setPrecioPorMinuto(getPrecioPorMinutoSegunPaisYHorario());
 	}
-	
+	/*
 	//ver este constructor por el bonus 2 de tarifa
 	public LlamadaInternacional(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, Pais unOrigen, Pais unDestino, double unPrecioPorMinuto) {
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
@@ -24,25 +24,22 @@ public class LlamadaInternacional extends Llamada{
 		this.paisDestino=unDestino;
 		setPrecioPorMinuto(unPrecioPorMinuto);
 	}
-	
+	*/
 	//metodos
 	public double calcularCosto(double unDescuento) { //depende que persona llame se pasa por parametro 0 o 10
-		
-		double totalSinDescuento=this.getDuracion()*getPrecioPorMinuto();
-		
-		return totalSinDescuento - descuento(totalSinDescuento,unDescuento);
-		
+		return calculo() - descuento(calculo(),unDescuento);
 	}
+	
 	
 	private double getPrecioPorMinutoSegunPaisYHorario() {
 		
 		double precioPorMinuto=0;
 		
-		if (esDiurno()) {		
-			precioPorMinuto= this.paisDestino.getPrecioDiurno();
-		}else {
-			precioPorMinuto =this.paisDestino.getPrecioNocturno();
-		}
+			if (esDiurno()) {		
+				precioPorMinuto= this.paisDestino.getPrecioDiurno();
+			}else {
+				precioPorMinuto =this.paisDestino.getPrecioNocturno();
+			}
 		
 		return precioPorMinuto;
 	}

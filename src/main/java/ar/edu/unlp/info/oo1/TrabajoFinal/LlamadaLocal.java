@@ -11,25 +11,19 @@ public class LlamadaLocal extends Llamada{
 	//constructor
 	public LlamadaLocal(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor) {
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
-		this.setPrecioPorMinuto(1);
+		setPrecioPorMinuto(1);
 		
 	}
-	
+	/*
 	//ver este constructor por el bonus 2 de tarifa
 	public LlamadaLocal(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, double unPrecioPorMinuto) {
 		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
 		this.setPrecioPorMinuto(unPrecioPorMinuto);
 	}
-	
+	*/
 	//metodos
 	public double calcularCosto(double unDescuento) {
-		return total() - descuento(total(),unDescuento);
-	}
-	
-	
-	
-	private double total() {
-		return this.getDuracion() * this.getPrecioPorMinuto() ;
+		return calculo() - descuento(calculo(),unDescuento);
 	}
 	
 }

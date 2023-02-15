@@ -25,7 +25,7 @@ public abstract class Persona {
 	//metodos
 	
 	public abstract double getDescuento();
-	public abstract double montoLlamadasEnPeriodo(LocalDate unaFechaInicio, LocalDate unaFechaFin);
+	//public abstract double montoLlamadasEnPeriodo(LocalDate unaFechaInicio, LocalDate unaFechaFin);
 
 	
 	public String getNumeroTelefonico() {
@@ -65,13 +65,20 @@ public abstract class Persona {
 	}	
 	
 	
-	
+	public double montoLlamadasEnPeriodo(LocalDate unaFechaInicio, LocalDate unaFechaFin) {		
+		return this.getLlamadasEnPeriodo(unaFechaInicio, unaFechaFin).stream()
+				.mapToDouble(l -> l.calcularCosto(getDescuento()))
+				.sum();
+	}
 		
 	protected List<Llamada> getLlamadasEnPeriodo(LocalDate fInicio, LocalDate fFin){
 		return this.registroLlamadas.stream()
 				.filter(llamada -> llamada.seEncuentraEnPeriodo(fInicio,fFin))
 				.collect((Collectors.toList()));
 	}
+	
+	
+	
 	
 	public Factura facturarLlamada(LocalDate fechaInicio, LocalDate fechaFin) {
 		

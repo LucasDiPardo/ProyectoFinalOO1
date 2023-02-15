@@ -38,7 +38,7 @@ public abstract class Llamada{
 	
 	//metodo
 	public abstract double calcularCosto(double unDescuento);
-
+	//protected double calcularCosto()[]
 	
 	public boolean seEncuentraEnPeriodo(LocalDate fInicio,LocalDate fFin) {
 			DateLapse d = new DateLapse(fInicio, fFin);
@@ -53,5 +53,7 @@ public abstract class Llamada{
 		return (unTotal*unDescuento)/100;
 	}
 	
-	
+	protected double calculo() {
+		return getDuracion()*getPrecioPorMinuto();
+	}
 }
