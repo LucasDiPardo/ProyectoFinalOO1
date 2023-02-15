@@ -36,18 +36,8 @@ public abstract class Llamada{
 		return this.duracion;
 	}
 	
-	//metodo
+	//metodos
 	public abstract double calcularCosto(double unDescuento);
-	//protected double calcularCosto()[]
-	
-	public boolean seEncuentraEnPeriodo(LocalDate fInicio,LocalDate fFin) {
-			DateLapse d = new DateLapse(fInicio, fFin);
-		return d.includesDate(this.fechaYHoraLlamada);
-	}
-	
-	public boolean esDiurno() {
-		return (fechaYHoraLlamada.getHour()>horaInicioDiurno)&& (fechaYHoraLlamada.getHour()<horaFinDiurno);
-	}
 	
 	protected double descuento(double unTotal,double unDescuento) {
 		return (unTotal*unDescuento)/100;
@@ -55,5 +45,15 @@ public abstract class Llamada{
 	
 	protected double calculo() {
 		return getDuracion()*getPrecioPorMinuto();
+	}
+	
+	
+	public boolean seEncuentraEnPeriodo(LocalDate fInicio,LocalDate fFin) {
+		DateLapse d = new DateLapse(fInicio, fFin);
+		return d.includesDate(this.fechaYHoraLlamada);
+	}
+	
+	public boolean esDiurno() {
+		return (fechaYHoraLlamada.getHour()>horaInicioDiurno)&& (fechaYHoraLlamada.getHour()<horaFinDiurno);
 	}
 }

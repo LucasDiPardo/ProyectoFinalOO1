@@ -14,13 +14,8 @@ public class LlamadaLocal extends Llamada{
 		setPrecioPorMinuto(1);
 		
 	}
-	/*
-	//ver este constructor por el bonus 2 de tarifa
-	public LlamadaLocal(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, double unPrecioPorMinuto) {
-		super(unaFechaYHora,unaDuracion, unRemitente,unReceptor);
-		this.setPrecioPorMinuto(unPrecioPorMinuto);
-	}
-	*/
+
+	
 	//metodos
 	public double calcularCosto(double unDescuento) {
 		return calculo() - descuento(calculo(),unDescuento);

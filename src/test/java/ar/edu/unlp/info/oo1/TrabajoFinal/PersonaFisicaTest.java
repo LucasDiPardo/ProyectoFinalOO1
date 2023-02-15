@@ -26,10 +26,11 @@ public class PersonaFisicaTest {
 		personaFisicaSinLlamadas = new PersonaFisica("Jose", "Pueyrredon 963", "1550", 303030);
 		
 		
-		llamadaLocal1 = personaFisicaConLlamadas.registrarLlamadaLocal(LocalDateTime.of(2023, 2, 10, 15, 0), 10, "Nicolas", "Jose");
-		llamadaUrbana1 = personaFisicaConLlamadas.registrarLlamadaInterurbana(LocalDateTime.of(2023, 2, 13, 12, 0), 10, "Nicolas", "Jose", 170);
-		llamadaInternacional1 = personaFisicaConLlamadas.registrarLlamadaInternacional(LocalDateTime.of(2022, 2, 10, 15, 0), 10, "Nicolas", "Jose", brasil, argentina);
+		llamadaLocal1 = personaFisicaConLlamadas.registrarLlamadaLocal(LocalDateTime.of(2023, 2, 10, 15, 0), 10, personaFisicaConLlamadas.getNumeroTelefonico(), "1550");
+		llamadaUrbana1 = personaFisicaConLlamadas.registrarLlamadaInterurbana(LocalDateTime.of(2023, 2, 13, 12, 0), 10, personaFisicaConLlamadas.getNumeroTelefonico(), "1550", 170);
+		llamadaInternacional1 = personaFisicaConLlamadas.registrarLlamadaInternacional(LocalDateTime.of(2022, 2, 10, 15, 0), 10, personaFisicaConLlamadas.getNumeroTelefonico(), "1550", brasil, argentina);
 	
+		
 		
 	}
 	

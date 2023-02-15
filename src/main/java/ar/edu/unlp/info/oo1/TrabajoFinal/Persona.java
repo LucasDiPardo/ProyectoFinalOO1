@@ -47,15 +47,6 @@ public abstract class Persona {
 		return llamadaInt;
 	}
 	
-	/*
-	//revisar este metodo si al final se usa y se replica a local e internacional
-	public LlamadaInterurbana registrarLlamadaInterurbanaConTarifa(LocalDateTime unaFechaYHora,int unaDuracion, String unRemitente, String unReceptor, int unaDistanciaKms, double unPrecioPorMinuto) {
-		LlamadaInterurbana llamadaInt = new LlamadaInterurbana (unaFechaYHora, unaDuracion,unRemitente, unReceptor, unaDistanciaKms,unPrecioPorMinuto);
-		this.registroLlamadas.add(llamadaInt);
-	
-	return llamadaInt;
-}
-	*/
 
 	public LlamadaInternacional registrarLlamadaInternacional(LocalDateTime unaFechaYHora,int unaDuracion, String unRemitente, String unReceptor, Pais unOrigen, Pais unDestino) {
 			LlamadaInternacional llamadaInter = new LlamadaInternacional(unaFechaYHora, unaDuracion, unRemitente, unReceptor, unOrigen, unDestino);
@@ -67,7 +58,7 @@ public abstract class Persona {
 	
 	public double montoLlamadasEnPeriodo(LocalDate unaFechaInicio, LocalDate unaFechaFin) {		
 		return this.getLlamadasEnPeriodo(unaFechaInicio, unaFechaFin).stream()
-				.mapToDouble(l -> l.calcularCosto(getDescuento()))
+				.mapToDouble(l -> l.calcularCosto(this.getDescuento()))
 				.sum();
 	}
 		
@@ -77,15 +68,11 @@ public abstract class Persona {
 				.collect((Collectors.toList()));
 	}
 	
-	
-	
+		
 	
 	public Factura facturarLlamada(LocalDate fechaInicio, LocalDate fechaFin) {
 		
-			double montoTotal= this.getLlamadasEnPeriodo(fechaInicio, fechaFin).stream()
-					.mapToDouble(l -> l.calcularCosto(this.getDescuento()))
-					.sum();
-
+			double montoTotal= montoLlamadasEnPeriodo(fechaInicio,fechaFin);
 		
 		return new Factura(this, LocalDate.now(), fechaInicio, fechaFin, montoTotal);
 	}

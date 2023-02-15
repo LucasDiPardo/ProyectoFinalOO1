@@ -11,6 +11,7 @@ public class LlamadaInterurbanaTest {
 	private LlamadaInterurbana llamadaInterUrbana;
 	
 	
+	
 	@BeforeEach
 	public void setUp() {
 		llamadaInterUrbana = new LlamadaInterurbana(LocalDateTime.of(2023, 2, 10, 9, 0), 10, null, null, 99);

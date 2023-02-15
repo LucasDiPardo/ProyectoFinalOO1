@@ -56,19 +56,20 @@ public class EmpresaTelefonicaTest {
 		assertEquals(0, empresaVacia.getNumerosTelefonicos().size());
 	}
 	
+	
 	@Test 
 	public void buscarClienteEmisorTest() {		
 		//busca por numero telefonico
-		assertEquals(null, empresa1.buscarClienteEmisor("Maria"));
-		assertEquals("Lucas", empresa1.buscarClienteEmisor("Lucas").getNombre());
+		assertEquals(null, empresa1.buscarClienteEmisorPorNumero("151515"));
+		assertEquals("Lucas", empresa1.buscarClienteEmisorPorNumero(personaJuridicaConLlamadas.getNumeroTelefonico()).getNombre());
 	}
 	
 	@Test
 	public void registrarLlamadasTest() {
 		//registro llamadas
-		empresa1.registrarLlamadaLocal(LocalDateTime.of(2023, 2, 10, 15, 0), 10, "Lucas", "Juan"); //llamada persona juridica
-		empresa1.registrarLlamadaInterurbana(LocalDateTime.of(2023, 1, 10, 13, 0), 5, "Lucas", "Martin", 200); //llamada persona juridica
-		empresa1.registrarLlamadaInternacional(LocalDateTime.of(2023, 1, 15, 9, 0), 20, "Nicolas", "Jose", argentina, brasil); //llamada persona fisica
+		empresa1.registrarLlamadaLocal(LocalDateTime.of(2023, 2, 10, 15, 0), 10, personaJuridicaConLlamadas.getNumeroTelefonico(), "101010"); //llamada persona juridica
+		empresa1.registrarLlamadaInterurbana(LocalDateTime.of(2023, 1, 10, 13, 0), 5, personaJuridicaConLlamadas.getNumeroTelefonico(), "101010", 200); //llamada persona juridica
+		empresa1.registrarLlamadaInternacional(LocalDateTime.of(2023, 1, 15, 9, 0), 20, personaFisicaConLlamadas.getNumeroTelefonico(), "101010", argentina, brasil); //llamada persona fisica
 		
 		//sin llamadas
 		assertEquals(0, personaFisicaSinLlamadas.getLlamadas().size());

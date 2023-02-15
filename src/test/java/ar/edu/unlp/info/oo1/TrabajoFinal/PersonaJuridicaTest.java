@@ -19,6 +19,7 @@ public class PersonaJuridicaTest {
 	@BeforeEach
 	public void setUp() {
 		
+		
 		argentina = new Pais("Argentina", 10, 5);
 		brasil = new Pais("Brasil", 15, 6);
 		
@@ -26,9 +27,9 @@ public class PersonaJuridicaTest {
 		personaJuridicaSinLlamadas = new PersonaJuridica("Jose Hnos", "Soarez 63", "1550", 303030, "Inversionista");
 		
 		
-		llamadaLocal1 = personaJuridicaConLlamadas.registrarLlamadaLocal(LocalDateTime.of(2023, 2, 10, 15, 0), 10, "LuP", "Juan");
-		llamadaUrbana1 = personaJuridicaConLlamadas.registrarLlamadaInterurbana(LocalDateTime.of(2023, 2, 13, 12, 0), 10, "LuP", "Juan", 670);
-		llamadaInternacional1 = personaJuridicaConLlamadas.registrarLlamadaInternacional(LocalDateTime.of(2022, 2, 10, 15, 0), 10, "Jose Hnos", "LuP", argentina, brasil);
+		llamadaLocal1 = personaJuridicaConLlamadas.registrarLlamadaLocal(LocalDateTime.of(2023, 2, 10, 15, 0), 10, personaJuridicaConLlamadas.getNumeroTelefonico(), "5050");
+		llamadaUrbana1 = personaJuridicaConLlamadas.registrarLlamadaInterurbana(LocalDateTime.of(2023, 2, 13, 12, 0), 10, personaJuridicaConLlamadas.getNumeroTelefonico(), "5050", 670);
+		llamadaInternacional1 = personaJuridicaConLlamadas.registrarLlamadaInternacional(LocalDateTime.of(2022, 2, 10, 15, 0), 10, personaJuridicaSinLlamadas.getNumeroTelefonico(), "1515", argentina, brasil);
 	
 		
 	}

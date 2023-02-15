@@ -17,11 +17,4 @@ public class PersonaFisica extends Persona{
 		return 10;
 	}
 	
-	/*
-	public double montoLlamadasEnPeriodo(LocalDate unaFechaInicio, LocalDate unaFechaFin) {		
-		return this.getLlamadasEnPeriodo(unaFechaInicio, unaFechaFin).stream()
-				.mapToDouble(l -> l.calcularCosto(getDescuento()))
-				.sum();
-	}
-	*/
 }

@@ -40,15 +40,15 @@ public class EmpresaTelefonica {
 	}
 	
 	private String asignarNumero() {		
-			String unNumero=numerosTelefonicos.get(0); //recupero el primer numero y me guardo la referencia
-			numerosTelefonicos.remove(unNumero); //lo elimino de la lista
+			String unNumero=numerosTelefonicos.get(0); 
+			numerosTelefonicos.remove(unNumero); 
 			
 		return unNumero; 
 	}
-	
-	public Persona buscarClienteEmisor(String unNombre) { //esta publico por el test - busca por nombre de emisor donde suponemos que es unico
+
+	public Persona buscarClienteEmisorPorNumero(String unNumero) { //esta publico por el test - busca por numero de emisor donde suponemos que es unico
 		return this.clientes.stream()
-				.filter(c -> c.getNombre().equals(unNombre))
+				.filter(c -> c.getNumeroTelefonico().equals(unNumero))
 				.findFirst()
 				.orElse(null);
 	}
@@ -56,21 +56,21 @@ public class EmpresaTelefonica {
 	
 	
 	public LlamadaLocal registrarLlamadaLocal( LocalDateTime unaFechaYHora, int duracion, String  unRemitente, String  unReceptor) {
-			Persona persona =  this.buscarClienteEmisor(unRemitente);
+			Persona persona =  this.buscarClienteEmisorPorNumero(unRemitente);
 			LlamadaLocal llamadaLocal = persona.registrarLlamadaLocal(unaFechaYHora,duracion,unRemitente,unReceptor);
 		return llamadaLocal;
 	}
 	
 	
 	public LlamadaInterurbana registrarLlamadaInterurbana(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, int unaDistanciaKms) {
-			Persona persona= this.buscarClienteEmisor(unRemitente);
+			Persona persona= this.buscarClienteEmisorPorNumero(unRemitente);
 			LlamadaInterurbana llamadainterurbana = persona.registrarLlamadaInterurbana(unaFechaYHora, unaDuracion, unRemitente, unReceptor, unaDistanciaKms);
 		return llamadainterurbana;
 	}
 	
 	
 	public LlamadaInternacional registrarLlamadaInternacional(LocalDateTime unaFechaYHora, int unaDuracion, String unRemitente, String unReceptor, Pais unOrigen, Pais unDestino) {
-			Persona persona = this.buscarClienteEmisor(unRemitente);
+			Persona persona = this.buscarClienteEmisorPorNumero(unRemitente);
 			LlamadaInternacional llamadaInternacional = persona.registrarLlamadaInternacional(unaFechaYHora, unaDuracion, unRemitente, unReceptor, unOrigen, unDestino);
 		return llamadaInternacional;
 	}
