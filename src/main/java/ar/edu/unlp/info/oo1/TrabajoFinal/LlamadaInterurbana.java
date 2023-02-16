@@ -32,7 +32,7 @@ public class LlamadaInterurbana extends Llamada{
 		if (distanciaKms<100) {
 			return 2;
 		}else {
-			if ((distanciaKms>=100)&&(distanciaKms<500)){
+			if ((distanciaKms>=100)&&(distanciaKms<=500)){
 				return 2.5;
 			}else {
 				return 3;

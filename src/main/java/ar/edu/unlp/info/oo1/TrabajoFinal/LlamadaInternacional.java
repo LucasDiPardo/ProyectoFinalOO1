@@ -18,7 +18,7 @@ public class LlamadaInternacional extends Llamada{
 	}
 
 	//metodos
-	public double calcularCosto(double unDescuento) { //depende que persona llame se pasa por parametro 0 o 10
+	public double calcularCosto(double unDescuento) { 
 		return calculo() - descuento(calculo(),unDescuento);
 	}
 	

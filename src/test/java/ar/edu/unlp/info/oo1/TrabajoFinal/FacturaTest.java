@@ -35,10 +35,10 @@ public class FacturaTest {
 
 	@Test
 	public void calcularMontoEnPeriodoTest() {
-		factura1 = new Factura(cliente1, LocalDate.now(), LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 2));
+		factura1 = new Factura(cliente1, LocalDate.of(2020, 1, 1), LocalDate.of(2020, 1, 2));
 		assertEquals(0, factura1.getMontoTotal());
 		
-		factura2 = new Factura(cliente1, LocalDate.now(), LocalDate.of(2022, 1, 1), LocalDate.of(2024, 1, 2));
+		factura2 = new Factura(cliente1, LocalDate.of(2022, 1, 1), LocalDate.of(2024, 1, 2));
 		assertEquals(27.5, factura2.getMontoTotal());
 	}
 }

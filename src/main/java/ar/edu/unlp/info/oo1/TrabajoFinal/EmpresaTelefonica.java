@@ -23,36 +23,34 @@ public class EmpresaTelefonica {
 		this.numerosTelefonicos.add(unNumero);
 	}
 	
+	public PersonaFisica registrarPersonaFisica(String nombre, String direccion, int dni) {
+		String numero= this.asignarNumero();
+		PersonaFisica per1= new PersonaFisica(nombre, direccion,numero, dni);
+		this.clientes.add(per1);
+		
+		return per1;
+	}
+	
 	public PersonaJuridica registrarPersonaJuridica(String nombre, String direccion, int cuit, String tipo) {
 			String numero= this.asignarNumero();
 			PersonaJuridica per1= new PersonaJuridica(nombre, direccion,numero, cuit, tipo);
 			this.clientes.add(per1);
 		
 		return per1;
-	}
-	
-	public PersonaFisica registrarPersonaFisica(String nombre, String direccion, int dni) {
-			String numero= this.asignarNumero();
-			PersonaFisica per1= new PersonaFisica(nombre, direccion,numero, dni);
-			this.clientes.add(per1);
-		
-		return per1;
-	}
+	}	
 	
 	private String asignarNumero() {		
 			String unNumero=numerosTelefonicos.get(0); 
-			numerosTelefonicos.remove(unNumero); 
-			
+			numerosTelefonicos.remove(unNumero);			
 		return unNumero; 
 	}
 
-	public Persona buscarClienteEmisorPorNumero(String unNumero) { //esta publico por el test - busca por numero de emisor donde suponemos que es unico
+	public Persona buscarClienteEmisorPorNumero(String unNumero) {
 		return this.clientes.stream()
 				.filter(c -> c.getNumeroTelefonico().equals(unNumero))
 				.findFirst()
 				.orElse(null);
 	}
-	
 	
 	
 	public LlamadaLocal registrarLlamadaLocal( LocalDateTime unaFechaYHora, int duracion, String  unRemitente, String  unReceptor) {
@@ -76,10 +74,10 @@ public class EmpresaTelefonica {
 	}
 	
 	
-	public Factura facturarCliente(String unNumero, LocalDate fechaFacturacion, LocalDate inicioPeriodo, LocalDate finPeriodo) {
+	public Factura facturarCliente(String unNumero, LocalDate inicioPeriodo, LocalDate finPeriodo) {
 		Persona cliente= this.buscarClienteEmisorPorNumero(unNumero);
 		
-		return new Factura(cliente, fechaFacturacion,inicioPeriodo,finPeriodo);
+		return new Factura(cliente,inicioPeriodo,finPeriodo);
 	}
 	
 	//getters

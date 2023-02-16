@@ -33,7 +33,7 @@ public class LlamadaInterurbanaTest {
 		
 		
 		//valores mayores a 500
-		llamadaInterUrbana = new LlamadaInterurbana(LocalDateTime.of(2023, 2, 10, 9, 0), 10, null, null, 500);
+		llamadaInterUrbana = new LlamadaInterurbana(LocalDateTime.of(2023, 2, 10, 9, 0), 10, null, null, 501);
 		assertEquals(35,llamadaInterUrbana.calcularCosto(0));
 	}
 }

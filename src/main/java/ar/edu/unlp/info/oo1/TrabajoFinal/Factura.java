@@ -14,9 +14,9 @@ public class Factura {
 	
 	
 	//constructor
-	public Factura(Persona unCliente, LocalDate unFeFacturacion, LocalDate fInicio, LocalDate fFin) {
+	public Factura(Persona unCliente , LocalDate fInicio, LocalDate fFin) {
 		this.cliente=unCliente;
-		this.fechaFacturacion=unFeFacturacion;
+		this.fechaFacturacion=LocalDate.now();
 		this.fechaInicioPeriodo=fInicio;
 		this.fechaFinPeriodo=fFin;
 		this.montoTotal= montoLlamadasEnPeriodo();
