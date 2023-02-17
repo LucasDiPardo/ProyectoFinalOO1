@@ -8,19 +8,19 @@ import java.util.Set;
 
 public class EmpresaTelefonica {
 	private List<Persona> clientes;
-	private List<String> numerosTelefonicos; //ver esto
+	private List<NumeroTelefonico> numerosTelefonicos;
 	
 	//constructor	
 	public EmpresaTelefonica() {
 		this.clientes= new ArrayList<Persona>();
-		this.numerosTelefonicos= new ArrayList<String>();
+		this.numerosTelefonicos= new ArrayList<NumeroTelefonico>();
 	}
 	
 	
 	//metodos
 	
 	public void agregarNumeroTelefonico(String unNumero) {
-		this.numerosTelefonicos.add(unNumero);
+		this.numerosTelefonicos.add(new NumeroTelefonico(unNumero));
 	}
 	
 	public PersonaFisica registrarPersonaFisica(String nombre, String direccion, int dni) {
@@ -39,15 +39,21 @@ public class EmpresaTelefonica {
 		return per1;
 	}	
 	
-	private String asignarNumero() {		
-			String unNumero=numerosTelefonicos.get(0); 
-			numerosTelefonicos.remove(unNumero);			
-		return unNumero; 
+	private String asignarNumero() {
+		
+			NumeroTelefonico unNumero= numerosTelefonicos.stream()
+					.filter(n -> n.estaDisponible())
+					.findFirst()
+					.orElse(null);
+			
+			unNumero.ocuparNumero();
+			
+		return unNumero.getNumero();
 	}
 
 	public Persona buscarClienteEmisorPorNumero(String unNumero) {
 		return this.clientes.stream()
-				.filter(c -> c.getNumeroTelefonico().equals(unNumero))
+				.filter(c -> c.getNumeroTelefonico()==(unNumero))
 				.findFirst()
 				.orElse(null);
 	}
@@ -86,7 +92,7 @@ public class EmpresaTelefonica {
 	}
 	
 	
-	public List<String> getNumerosTelefonicos(){
+	public List<NumeroTelefonico> getNumerosTelefonicos(){
 		return this.numerosTelefonicos;
 	}
 }

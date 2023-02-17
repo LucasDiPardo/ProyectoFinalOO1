@@ -36,8 +36,8 @@ public class EmpresaTelefonicaTest {
 		empresa1.agregarNumeroTelefonico("40");
 		empresa1.agregarNumeroTelefonico("50");
 		
-		
 		//alta clientes
+
 		
 		//personas Juridicas
 		personaJuridicaConLlamadas = empresa1.registrarPersonaJuridica("Lucas", "Francisco 129", 37373737, "Sociedad Anonima");
@@ -51,8 +51,8 @@ public class EmpresaTelefonicaTest {
 	}
 	
 	@Test 
-	public void agregarNumeroTelefonicoTest() {
-		assertEquals(1, empresa1.getNumerosTelefonicos().size()); //se cargaron 5 numeros, se asignaron 4, resta 1
+	public void agregarNumeroTelefonicoTest() {		
+		assertEquals(5, empresa1.getNumerosTelefonicos().size()); //se cargaron 5 numeros, se asignaron 4, resta 1
 		assertEquals(0, empresaVacia.getNumerosTelefonicos().size());
 	}
 	
